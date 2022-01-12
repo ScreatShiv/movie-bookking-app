@@ -20,7 +20,7 @@ class Details extends Component {
                 trailer_url: "",
                 artists: []
             },
-            starIcons: [{
+            ratingStar: [{
                 id: 1,
                 stateId: "star1",
                 color: "black"
@@ -71,7 +71,7 @@ class Details extends Component {
 
     starClickHandler = (id) => {
         let starIconList = [];
-        for (let star of this.state.starIcons) {
+        for (let star of this.state.ratingStar) {
             let starNode = star;
             if (star.id <= id) {
                 starNode.color = "yellow"
@@ -82,7 +82,7 @@ class Details extends Component {
             }
             starIconList.push(starNode);
         }
-        this.setState({ starIcons: starIconList });
+        this.setState({ ratingStar: starIconList });
     }
 
     render() {
@@ -136,7 +136,7 @@ class Details extends Component {
                     </div>
                     <div className="rightDetails">
                         <Typography> <span className="bold">Rate this movie: </span></Typography>
-                        {this.state.starIcons.map(star => (
+                        {this.state.ratingStar.map(star => (
                             <StarBorderIcon className={star.color} key={"star" + star.id} onClick={() => this.starClickHandler(star.id)} />
                         ))}
                         <div className="bold marginBottom16 marginTop16"><Typography><span className="bold">Artists:</span></Typography></div>
